@@ -1,0 +1,70 @@
+@if (topic(); as currentTopic) {
+  <a class="back" routerLink="/">&larr; Back to Dashboard</a>
+
+  <article class="tutorial glass">
+    <header>
+      <span class="icon" aria-hidden="true">{{ currentTopic.icon }}</span>
+      <p class="eyebrow">Topic {{ currentTopic.order.toString().padStart(2, '0') }}</p>
+      <h1 class="gradient-text">{{ content()?.title ?? currentTopic.title }}</h1>
+      <p class="summary">{{ currentTopic.summary }}</p>
+    </header>
+
+    @if (content(); as body) {
+      <section class="section">
+        <h2><span class="dot"></span>What is it?</h2>
+        <p>{{ body.whatIsIt }}</p>
+      </section>
+
+      <section class="section">
+        <h2><span class="dot"></span>Why use it?</h2>
+        <p>{{ body.whyUseIt }}</p>
+      </section>
+
+      <section class="section">
+        <h2><span class="dot"></span>When to use it?</h2>
+        <p>{{ body.whenToUseIt }}</p>
+      </section>
+
+      <section class="section scenario">
+        <h2><span class="dot"></span>Real-world project scenario</h2>
+        <p>{{ body.realWorldScenario }}</p>
+      </section>
+
+      <section class="section">
+        <h2><span class="dot"></span>Code examples</h2>
+        @for (example of body.codeExamples; track example.caption) {
+          <figure class="code">
+            <figcaption>{{ example.caption }}</figcaption>
+            <pre><code>{{ example.code }}</code></pre>
+          </figure>
+        }
+      </section>
+    } @else {
+      <p class="missing">Content for this topic is coming soon.</p>
+    }
+
+    <nav class="pager">
+      @if (previous(); as prev) {
+        <a class="pager-link" [routerLink]="['/topic', prev.slug]">
+          <span>Previous</span>
+          <strong>{{ prev.icon }} {{ prev.title }}</strong>
+        </a>
+      } @else {
+        <span></span>
+      }
+
+      @if (next(); as nextTopic) {
+        <a class="pager-link right" [routerLink]="['/topic', nextTopic.slug]">
+          <span>Next</span>
+          <strong>{{ nextTopic.title }} {{ nextTopic.icon }}</strong>
+        </a>
+      }
+    </nav>
+  </article>
+} @else {
+  <section class="tutorial glass not-found">
+    <h1>Topic not found</h1>
+    <p>We could not find a tutorial for this URL.</p>
+    <a class="back" routerLink="/">&larr; Back to Dashboard</a>
+  </section>
+}

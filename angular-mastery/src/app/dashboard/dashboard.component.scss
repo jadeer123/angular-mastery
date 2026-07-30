@@ -1,0 +1,113 @@
+.hero {
+  padding: 3rem 2rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+
+  .eyebrow {
+    margin: 0 0 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(2.25rem, 6vw, 3.75rem);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+  }
+
+  .tagline {
+    max-width: 46rem;
+    margin: 1rem auto 0;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 1.25rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.4rem;
+  color: inherit;
+  text-decoration: none;
+  transition: transform var(--transition), box-shadow var(--transition),
+    border-color var(--transition), background var(--transition);
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .icon {
+    font-size: 1.75rem;
+    line-height: 1;
+  }
+
+  .order {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.25rem 0.55rem;
+    border-radius: 999px;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--glass-border);
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--text-muted);
+  }
+
+  .cta {
+    margin-top: auto;
+    padding-top: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--vivid-pink);
+    opacity: 0;
+    transform: translateX(-0.35rem);
+    transition: opacity var(--transition), transform var(--transition);
+  }
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-6px);
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.06),
+      0 0 2.5rem rgba(179, 92, 255, 0.35);
+
+    .cta {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 2.25rem 1.25rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

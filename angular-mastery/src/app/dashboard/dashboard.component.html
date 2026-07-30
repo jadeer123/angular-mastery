@@ -1,0 +1,22 @@
+<header class="hero glass">
+  <p class="eyebrow">Angular 20 &middot; standalone &middot; signals</p>
+  <h1>Angular <span class="gradient-text">Mastery</span></h1>
+  <p class="tagline">
+    {{ topics.length }} bite-sized tutorials that explain what each Angular concept is, why and when to
+    use it, and how it looks in a real project.
+  </p>
+</header>
+
+<section class="grid" aria-label="Tutorial topics">
+  @for (topic of topics; track topic.slug) {
+    <a class="card glass" [routerLink]="['/topic', topic.slug]">
+      <div class="card-top">
+        <span class="icon" aria-hidden="true">{{ topic.icon }}</span>
+        <span class="order">{{ topic.order.toString().padStart(2, '0') }}</span>
+      </div>
+      <h2>{{ topic.title }}</h2>
+      <p>{{ topic.summary }}</p>
+      <span class="cta">Open tutorial &rarr;</span>
+    </a>
+  }
+</section>
