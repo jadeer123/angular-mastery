@@ -12,6 +12,14 @@ export interface CodeExample {
   code: string;
 }
 
+export type LessonBlock =
+  | { kind: 'heading'; level: 2 | 3; text: string }
+  | { kind: 'paragraph'; text: string }
+  | { kind: 'quote'; text: string }
+  | { kind: 'list'; ordered: boolean; items: string[] }
+  | { kind: 'table'; headers: string[]; rows: string[][] }
+  | { kind: 'code'; language: string; code: string };
+
 export interface TopicContent {
   title: string;
   whatIsIt: string;

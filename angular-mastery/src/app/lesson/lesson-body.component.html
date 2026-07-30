@@ -1,0 +1,62 @@
+@for (block of blocks(); track $index) {
+  @switch (block.kind) {
+    @case ('heading') {
+      @if (block.level === 2) {
+        <h3 class="lesson-h2" [innerHTML]="block.text | inlineMarkdown"></h3>
+      } @else {
+        <h4 class="lesson-h3" [innerHTML]="block.text | inlineMarkdown"></h4>
+      }
+    }
+    @case ('paragraph') {
+      <p class="lesson-p" [innerHTML]="block.text | inlineMarkdown"></p>
+    }
+    @case ('quote') {
+      <blockquote class="lesson-quote" [innerHTML]="block.text | inlineMarkdown"></blockquote>
+    }
+    @case ('list') {
+      @if (block.ordered) {
+        <ol class="lesson-list">
+          @for (item of block.items; track $index) {
+            <li [innerHTML]="item | inlineMarkdown"></li>
+          }
+        </ol>
+      } @else {
+        <ul class="lesson-list">
+          @for (item of block.items; track $index) {
+            <li [innerHTML]="item | inlineMarkdown"></li>
+          }
+        </ul>
+      }
+    }
+    @case ('table') {
+      <div class="lesson-table-wrap">
+        <table class="lesson-table">
+          <thead>
+            <tr>
+              @for (header of block.headers; track $index) {
+                <th [innerHTML]="header | inlineMarkdown"></th>
+              }
+            </tr>
+          </thead>
+          <tbody>
+            @for (row of block.rows; track $index) {
+              <tr>
+                @for (cell of row; track $index) {
+                  <td [innerHTML]="cell | inlineMarkdown"></td>
+                }
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    }
+    @case ('code') {
+      <figure class="lesson-code">
+        @if (block.language !== 'text') {
+          <figcaption>{{ block.language }}</figcaption>
+        }
+        <pre><code>{{ block.code }}</code></pre>
+      </figure>
+    }
+  }
+}

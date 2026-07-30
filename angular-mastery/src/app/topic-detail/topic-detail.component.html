@@ -43,6 +43,15 @@
       <p class="missing">Content for this topic is coming soon.</p>
     }
 
+    @if (lesson().length) {
+      <section class="section lesson">
+        <h2><span class="dot"></span>Full lesson</h2>
+        <app-lesson-body [blocks]="lesson()" />
+      </section>
+    } @else if (lessonLoading()) {
+      <p class="missing">Loading the full lesson&hellip;</p>
+    }
+
     <nav class="pager">
       @if (previous(); as prev) {
         <a class="pager-link" [routerLink]="['/topic', prev.slug]">

@@ -1,0 +1,130 @@
+:host {
+  display: block;
+}
+
+.lesson-h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin: 2rem 0 0.6rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.lesson-h3 {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--vivid-pink);
+}
+
+.lesson-p {
+  margin: 0.6rem 0;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.lesson-quote {
+  margin: 0.9rem 0;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  border-left: 3px solid var(--electric-violet);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.lesson-list {
+  margin: 0.6rem 0;
+  padding-left: 1.25rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+
+  li::marker {
+    color: var(--vivid-pink);
+  }
+}
+
+.lesson-table-wrap {
+  margin: 1rem 0;
+  overflow-x: auto;
+  border-radius: 0.9rem;
+  border: 1px solid var(--glass-border);
+}
+
+.lesson-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+
+  th,
+  td {
+    padding: 0.6rem 0.85rem;
+    text-align: left;
+    border-bottom: 1px solid var(--glass-border);
+    vertical-align: top;
+  }
+
+  th {
+    background: rgba(255, 255, 255, 0.07);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  td {
+    color: var(--text-muted);
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+}
+
+.lesson-code {
+  margin: 1rem 0;
+
+  figcaption {
+    margin-bottom: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-dim);
+  }
+
+  pre {
+    margin: 0;
+    padding: 1rem 1.1rem;
+    overflow-x: auto;
+    border-radius: 0.9rem;
+    background: rgba(8, 8, 16, 0.72);
+    border: 1px solid var(--glass-border);
+    box-shadow: inset 0 0 2rem rgba(0, 0, 0, 0.35);
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: #e6e6f5;
+    white-space: pre;
+  }
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.35rem;
+  background: rgba(255, 255, 255, 0.09);
+  color: #ffd8ef;
+}
+
+.lesson-code code {
+  padding: 0;
+  background: none;
+  color: #e6e6f5;
+}
